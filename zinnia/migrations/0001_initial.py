@@ -175,10 +175,12 @@ class Migration(migrations.Migration):
         migrations.AddIndex(
             model_name='entry',
             index=models.Index(fields=['status', 'creation_date',
-                                       'start_publication', 'end_publication']),
+                                       'start_publication', 'end_publication'],
+                               name='zinnia_entry_status_create_idx'),
         ),
         migrations.AddIndex(
             model_name='entry',
-            index=models.Index(fields=['slug', 'creation_date']),
+            index=models.Index(fields=['slug', 'creation_date'],
+                               name='zinnia_entry_slug_create_idx'),
         ),
     ]

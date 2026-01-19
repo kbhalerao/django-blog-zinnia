@@ -60,12 +60,14 @@ class Migration(migrations.Migration):
         ),
         migrations.AddIndex(
             model_name='entry',
-            index=models.Index(fields=['slug', 'publication_date']),
+            index=models.Index(fields=['slug', 'publication_date'],
+                               name='zinnia_entry_slug_pub_idx'),
         ),
         migrations.AddIndex(
             model_name='entry',
             index=models.Index(fields=['status', 'publication_date',
-                                       'start_publication', 'end_publication']),
+                                       'start_publication', 'end_publication'],
+                               name='zinnia_entry_status_pub_idx'),
         ),
         migrations.RunPython(fill_publication_date, unfill_publication_date)
     ]

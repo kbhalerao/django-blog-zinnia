@@ -192,9 +192,11 @@ class CoreEntry(models.Model):
         verbose_name = _('entry')
         verbose_name_plural = _('entries')
         indexes = [
-            models.Index(fields=['slug', 'publication_date']),
+            models.Index(fields=['slug', 'publication_date'],
+                         name='zinnia_entry_slug_pub_idx'),
             models.Index(fields=['status', 'publication_date',
-                                 'start_publication', 'end_publication']),
+                                 'start_publication', 'end_publication'],
+                         name='zinnia_entry_status_pub_idx'),
         ]
         permissions = (('can_view_all', 'Can view all entries'),
                        ('can_change_status', 'Can change status'),
