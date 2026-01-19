@@ -172,10 +172,13 @@ class Migration(migrations.Migration):
                 to='zinnia.Author', blank=True),
             preserve_default=True,
         ),
-        migrations.AlterIndexTogether(
-            name='entry',
-            index_together=set([('status', 'creation_date',
-                                 'start_publication', 'end_publication'),
-                                ('slug', 'creation_date')]),
+        migrations.AddIndex(
+            model_name='entry',
+            index=models.Index(fields=['status', 'creation_date',
+                                       'start_publication', 'end_publication']),
+        ),
+        migrations.AddIndex(
+            model_name='entry',
+            index=models.Index(fields=['slug', 'creation_date']),
         ),
     ]
