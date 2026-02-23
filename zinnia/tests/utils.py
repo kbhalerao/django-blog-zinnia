@@ -1,4 +1,5 @@
 """Utils for Zinnia's tests"""
+import datetime as dt
 import functools
 from datetime import datetime as original_datetime
 from io import BytesIO
@@ -41,7 +42,7 @@ def omniscient_datetime(*args):
     """
     d = original_datetime(*args)
     if settings.USE_TZ:
-        d = timezone.make_aware(d, timezone.utc)
+        d = timezone.make_aware(d, dt.timezone.utc)
     return d
 
 
